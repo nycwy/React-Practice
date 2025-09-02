@@ -1,10 +1,9 @@
-import profilePic from './assets/male.jpg'
-export default function Card() {
+export default function Card(props) {
     return (
         <div className="card">
-            <img className='card-img' src={profilePic} alt="profile picture"/>
-            <h2 className='card-title'>Hello Singh</h2>
-            <p className='card-text'>I am a junior Software Dev</p>
+            <img className='card-img' src={props.imgSrc} alt="profile picture"/>
+            <h2 className='card-title'>{props.title}</h2>
+            <p className='card-text'>{props.desc}</p>
         </div>
     )
 }
