@@ -1,3 +1,12 @@
+// import PropTypes from 'prop-types'
+
+// Student.PropTypes = {
+//     name: PropTypes.string,
+//     age: PropTypes.number,
+//     isStudent: PropTypes.bool,
+// }
+
+
 export default function Student(props) {
     return (
         <div className="student">
