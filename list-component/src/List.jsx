@@ -11,6 +11,9 @@ export default function List() {
     // fruits.sort((a, b) => b.name.localeCompare(a.name)) //Reverse Alphabetical
     // fruits.sort((a, b) => a.calories - b.calories); //Numeric
     // fruits.sort((a, b) => b.calories - a.calories); //Reverse Numeric
+
+    // const lowCalFruits = fruits.filter(lowCalFruit => lowCalFruit.calories < 50);
+    // const highCalFruits = fruits.filter(highCalFruit => highCalFruit.calories > 50);
     
     const listItems = fruits.map(fruit => <li key={fruit.id}>{fruit.name}: &nbsp; <b>{fruit.calories}</b></li>)
     return (<ul>{listItems}</ul>);
