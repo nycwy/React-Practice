@@ -1,20 +1,33 @@
 import { useState } from "react";
 
 export default function ReactHook() {
-    let [count, setCount] = useState(0);
+    const [name, setName] = useState("Guest");
+    const [age, setAge] = useState(0);
+    const [isEmployed, setIsEmployed] = useState();
 
-    const handleIncrease = () => {
-        setCount(prev => prev + 1);
+    const changeName = () => {
+        setName("Santosh");
     }
 
-    const handleDecrease = () => {
-        setCount(prev => prev - 1);
+    const ageIncrement = () => {
+        setAge(age + 1);
     }
+
+    const toggleEmpStatus = () => {
+        setIsEmployed(!isEmployed);
+    }
+
     return (
         <>
-            <h2>{count}</h2>
-            <button onClick={handleIncrease}>+</button>
-            <button onClick={handleDecrease}>-</button>
+            <p>Name: {name}</p>
+            <button onClick={changeName}>Set Name</button>
+
+            <p>Age: {age}</p>
+            <button onClick={ageIncrement}>Increment Age</button>
+
+            <p>Is employed: {isEmployed ? "Yes" : "No"}</p>
+            <button onClick={toggleEmpStatus}>Toggle Employe Status</button>
+            
         </>
     );
 }
