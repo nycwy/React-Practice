@@ -1,4 +1,4 @@
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db } from "./firebase";
 
@@ -40,17 +40,31 @@ function App() {
         getPosts();
     }, []);
 
+    const handleDelete = async (id) => {
+        try {
+            const docRef = doc(db, "posts", id);
+            await deleteDoc(docRef);
+            const newPost = posts.filter(post => post.id !== id);
+            setPosts(newPost);
+        } catch (error) {
+            console.log("Error: ", error);
+        }
+    }
+
     return (
         <>
             <input value={message} type="text" name="post" id="post" placeholder="Post" onChange={(e) => setMessage(e.target.value)} />
             <button type="submit" onClick={handleAddPost}>Add Post</button>
             <h1>All Posts</h1>
             <div>
-                {
-                    posts.map((post) => {
-                        return <div key={post.id}>{post.message}</div>
-                    })
-                }
+                {posts.map((post) => {
+                    return (
+                        <div key={post.id}>
+                            <p>{post.message}</p>
+                            <button onClick={() => handleDelete(post.id)}>Delete</button>
+                        </div>
+                    )
+                })}
             </div>
         </>
     )
