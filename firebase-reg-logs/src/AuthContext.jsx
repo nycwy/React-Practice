@@ -9,7 +9,7 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        const authListener = onAuthStateChanged(auth, async (currentUser) => {
+        const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
             if (currentUser) {
                 const userRef = doc(db, "users", currentUser.uid);
                 const user = await getDoc(userRef);
@@ -18,6 +18,8 @@ const AuthProvider = ({ children }) => {
                 setUser(null);
             }
         });
+
+        return unsubscribe;
     }, []);
     return (
         <AuthContext.Provider value={{ user }}>
