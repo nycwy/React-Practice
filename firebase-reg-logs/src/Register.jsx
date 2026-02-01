@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from './firebase';
+import { auth, db } from './firebase';
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 
 const Register = () => {
     const [email, setEmail] = useState('');
@@ -14,7 +15,12 @@ const Register = () => {
                 email,
                 password
             );
-            console.log(userDoc.user.uid);
+            const userRef = doc(db, "users", userDoc.user.uid);
+            await setDoc(userRef, {
+                email,
+                username,
+                created_at: serverTimestamp(),
+            });
         } catch (error) {
             console.log("Error: ", error);
         }
