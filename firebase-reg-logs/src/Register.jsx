@@ -2,8 +2,11 @@ import { useState } from "react";
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from './firebase';
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+    const navigate = useNavigate();
+
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -21,6 +24,7 @@ const Register = () => {
                 username,
                 created_at: serverTimestamp(),
             });
+            navigate('/');
         } catch (error) {
             console.log("Error: ", error);
         }
