@@ -7,11 +7,15 @@ import Register from './Register.jsx'
 import Login from './Login.jsx'
 import AuthProvider from './AuthContext.jsx'
 import PublicRoute from '../PublicRoute.jsx'
+import ProtectedRoute from '../ProtectedRoute.jsx'
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <App />
+        element:
+            <ProtectedRoute>
+                <App />
+            </ProtectedRoute>
     },
     {
         path: '/register',
@@ -22,7 +26,10 @@ const router = createBrowserRouter([
     },
     {
         path: '/login',
-        element: <Login />
+        element:
+            <PublicRoute>
+                <Login />
+            </PublicRoute>
     },
 ]);
 

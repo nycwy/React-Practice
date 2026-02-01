@@ -6,8 +6,8 @@ function App() {
     
     return (
         <>
-            <div>{user.email}</div>
-            <div>{user.username}</div>
+            <div>{user?.email}</div>
+            <div>{user?.username}</div>
         </>
     )
 }
