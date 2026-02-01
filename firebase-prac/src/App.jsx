@@ -1,18 +1,18 @@
 import { addDoc, collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db } from "./firebase";
+import Input from "./Input";
 
 function App() {
     const [message, setMessage] = useState('');
     const [posts, setPosts] = useState([]);
-
     const handleAddPost = async () => {
         if (!message) return;
 
         try {
             const postRef = collection(db, "posts");
-            await addDoc(postRef, { message });
-
+            const docRef = await addDoc(postRef, { message });
+            setPosts((prev) => [...prev, { id: docRef.id, message }]);
             setMessage('');
             console.log("Post added Successfully!");
         } catch (error) {
@@ -51,6 +51,12 @@ function App() {
         }
     }
 
+    const handleLocalUpdate = (id, newMessage) => {
+        setPosts(prevPosts => prevPosts.map(post => {
+            return post.id === id ? { ...post, message: newMessage } : post
+        }));
+    }
+
     return (
         <>
             <input value={message} type="text" name="post" id="post" placeholder="Post" onChange={(e) => setMessage(e.target.value)} />
@@ -62,6 +68,7 @@ function App() {
                         <div key={post.id}>
                             <p>{post.message}</p>
                             <button onClick={() => handleDelete(post.id)}>Delete</button>
+                            <Input postId={post.id} onUpdateSuccess={handleLocalUpdate} />
                         </div>
                     )
                 })}
