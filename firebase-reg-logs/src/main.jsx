@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Register from './Register.jsx'
 import Login from './Login.jsx'
 import AuthProvider from './AuthContext.jsx'
+import PublicRoute from '../PublicRoute.jsx'
 
 const router = createBrowserRouter([
     {
@@ -14,7 +15,10 @@ const router = createBrowserRouter([
     },
     {
         path: '/register',
-        element: <Register />
+        element:
+            <PublicRoute>
+                <Register />
+            </PublicRoute>
     },
     {
         path: '/login',
