@@ -5,7 +5,7 @@ const Already = ({ text, link, linkText }) => {
     return (
         <div>
             <p>{text}</p>
-            <Link to={link}>{linkText}</Link>
+            <Link className='text-blue-800 font-medium hover:underline' to={link}>{linkText}</Link>
         </div>
     )
 }

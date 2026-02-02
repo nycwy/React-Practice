@@ -14,29 +14,31 @@ const Register = () => {
     }
 
     return (
-        <>
-            <Heading headingText='Register Now' text='Just a demo registration' />
-            <Input
-                type='email'
-                value={email}
-                placeholder='Email'
-                setValue={setEmail}
-            />
-            <Input
-                type='text'
-                value={username}
-                placeholder='Username'
-                setValue={setUsername}
-            />
-            <Input
-                type='password'
-                value={password}
-                placeholder='Password'
-                setValue={setPassword}
-            />
-            <Already text='Already have an account?' linkText='Login' link='/login' />
-            <Button text="Register" onClick={handleRegister} />
-        </>
+        <div className='flex items-center justify-center min-h-screen bg-gray-100'>
+            <div className='w-full max-w-md p-8 space-y-6 bg-white rounded-xl shadow-lg border border-gray-100'>
+                <Heading headingText='Register Now' text='Just a demo registration' />
+                <Input
+                    type='email'
+                    value={email}
+                    placeholder='Email'
+                    setValue={setEmail}
+                />
+                <Input
+                    type='text'
+                    value={username}
+                    placeholder='Username'
+                    setValue={setUsername}
+                />
+                <Input
+                    type='password'
+                    value={password}
+                    placeholder='Password'
+                    setValue={setPassword}
+                />
+                <Already text='Already have an account?' linkText='Login' link='/login' />
+                <Button text="Register" onClick={handleRegister} />
+            </div>
+        </div>
     )
 }
 
