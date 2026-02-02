@@ -28,8 +28,8 @@ const Login = () => {
                     placeholder='Password'
                     setValue={setPassword}
                 />
-                <Already text='New Here?' linkText='Please Register' link='/register' />
-                <Button text="Login" onClick={handleLogin} />
+                <Already className="text-green-600" text='New Here?' linkText='Please Register' link='/register' />
+                <Button className="bg-blue-600 hover:bg-blue-700" text="Login" onClick={handleLogin} />
             </div>
         </div>
     )

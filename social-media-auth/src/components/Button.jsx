@@ -1,9 +1,9 @@
-import React from 'react'
+import { twMerge } from 'tailwind-merge'
 
-const Button = ({ text, onClick }) => {
+const Button = ({ text, onClick, className }) => {
     return (
         <div className='text-center'>
-            <button className='bg-green-600 text-white px-4 py-2 rounded-md w-1/2 shadow-lg font-semibold hover:bg-green-700' onClick={onClick}>{text}</button>
+            <button className={twMerge('bg-green-600 text-white px-4 py-2 rounded-md w-1/2 shadow-lg font-semibold hover:bg-green-700', className)} onClick={onClick}>{text}</button>
         </div>
     )
 }
