@@ -7,7 +7,7 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import Profile from './pages/Profile'
 import AddPost from './pages/AddPost'
-import AuthProvider from './context/AuthContex'
+import AuthProvider from './context/AuthProvider'
 
 const router = createBrowserRouter([
     {
