@@ -8,6 +8,7 @@ import Login from './pages/Login'
 import Profile from './pages/Profile'
 import AddPost from './pages/AddPost'
 import AuthProvider from './context/AuthProvider'
+import PublicRoute from './routes/PublicRoute'
 
 const router = createBrowserRouter([
     {
@@ -16,11 +17,19 @@ const router = createBrowserRouter([
     },
     {
         path: '/register',
-        element: <Register />
+        element: (
+            <PublicRoute>
+                <Register />
+            </PublicRoute>
+        )
     },
     {
         path: '/login',
-        element: <Login />
+        element: (
+            <PublicRoute>
+                <Login />
+            </PublicRoute>
+        )
     },
     {
         path: '/profile',
