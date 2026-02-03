@@ -9,11 +9,16 @@ import Profile from './pages/Profile'
 import AddPost from './pages/AddPost'
 import AuthProvider from './context/AuthProvider'
 import PublicRoute from './routes/PublicRoute'
+import ProtectedRoute from './routes/ProtectedRoute'
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <Home />
+        element: (
+            <ProtectedRoute>
+                <Home />
+            </ProtectedRoute>
+        )
     },
     {
         path: '/register',
@@ -33,11 +38,19 @@ const router = createBrowserRouter([
     },
     {
         path: '/profile',
-        element: <Profile />
+        element: (
+            <ProtectedRoute>
+                <Profile />
+            </ProtectedRoute>
+        )
     },
     {
         path: '/add-post',
-        element: <AddPost />
+        element: (
+            <ProtectedRoute>
+                <AddPost />
+            </ProtectedRoute>
+        )
     }
 ])
 

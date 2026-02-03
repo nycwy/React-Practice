@@ -4,7 +4,6 @@ import { Navigate } from 'react-router-dom';
 
 const PublicRoute = ({ children }) => {
     const { user } = useContext(AuthContext);
-    console.log(user);
 
     return (
         <div>
