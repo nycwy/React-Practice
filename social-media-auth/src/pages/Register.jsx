@@ -3,14 +3,26 @@ import Input from '../components/Input';
 import Already from '../components/Already';
 import Button from '../components/Button';
 import Heading from '../components/Heading';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth, db } from '../firebase';
+import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
 
 const Register = () => {
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleRegister = () => {
-        
+    const handleRegister = async () => {
+        try {
+            if (!email || !username || !password) {
+                return;
+            }
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const userRef = doc(db, "users", userCredential.user.uid);
+            await setDoc(userRef, { email, username, created_at: serverTimestamp() });
+        } catch (error) {
+            console.log("Error: ", error);
+        }
     }
 
     return (
