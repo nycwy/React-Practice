@@ -10,6 +10,7 @@ import AddPost from './pages/AddPost'
 import AuthProvider from './context/AuthProvider'
 import PublicRoute from './routes/PublicRoute'
 import ProtectedRoute from './routes/ProtectedRoute'
+import Logout from './pages/Logout'
 
 const router = createBrowserRouter([
     {
@@ -49,6 +50,14 @@ const router = createBrowserRouter([
         element: (
             <ProtectedRoute>
                 <AddPost />
+            </ProtectedRoute>
+        )
+    },
+    {
+        path: '/logout',
+        element: (
+            <ProtectedRoute>
+                <Logout />
             </ProtectedRoute>
         )
     }

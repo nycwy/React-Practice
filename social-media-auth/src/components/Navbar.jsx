@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { FiHome, FiPlusSquare, FiUser } from 'react-icons/fi';
+import { FiHome, FiPlusSquare, FiUser, FiLogOut } from 'react-icons/fi';
 
 const Navbar = () => {
     const linkClasses = ({ isActive }) =>
@@ -33,6 +33,11 @@ const Navbar = () => {
                         <NavLink to="/profile" className={linkClasses}>
                             <FiUser size={20} />
                             <span>Profile</span>
+                        </NavLink>
+
+                        <NavLink to="/logout" className={linkClasses}>
+                            <FiLogOut size={20} />
+                            <span className="hidden md:block">Logout</span>
                         </NavLink>
                     </div>
 
