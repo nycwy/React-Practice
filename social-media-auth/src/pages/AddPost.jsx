@@ -15,7 +15,7 @@ const AddPost = () => {
     return (
         <div>
             <Navbar />
-            <div>
+            <div className='p-8 text-center space-y-2'>
                 <h1>Add Post</h1>
                 <label htmlFor="title">Title</label>
                 <Input
@@ -26,13 +26,15 @@ const AddPost = () => {
                     setValue={setTitle}
                 />
                 <label htmlFor="message">Post Message</label>
-                <Textarea
-                    type="text"
-                    placeholder="Message"
-                    value={message}
-                    id='message'
-                    setValue={setMessage}
-                />
+                <div>
+                    <Textarea
+                        type="text"
+                        placeholder="Message"
+                        value={message}
+                        id='message'
+                        setValue={setMessage}
+                    />
+                </div>
                 <Button text='Create Post' onClick={handleCreatePost} />
             </div>
         </div>
