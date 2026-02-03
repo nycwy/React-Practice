@@ -3,13 +3,22 @@ import Heading from '../components/Heading';
 import Input from '../components/Input';
 import Already from '../components/Already';
 import Button from '../components/Button';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleLogin = () => {
-        
+    const handleLogin = async () => {
+        try {
+            if (!email || !password) {
+                return;
+            }
+            await signInWithEmailAndPassword(auth, email, password);
+        } catch (error) {
+            console.log("Error: ", error);
+        }
     }
 
     return (
