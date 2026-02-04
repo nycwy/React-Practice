@@ -1,15 +1,29 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { AuthContext } from '../context/AuthContext';
 import Navbar from '../components/Navbar';
 import Input from '../components/Input';
 import Textarea from '../components/Textarea';
 import Button from '../components/Button';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { db } from '../firebase';
 
 const AddPost = () => {
     const [title, setTitle] = useState('');
     const [message, setMessage] = useState('');
+    const { user } = useContext(AuthContext);
 
-    const handleCreatePost = () => {
-        
+    const handleCreatePost = async () => {
+        try {
+            const postRef = collection(db, "posts");
+            await addDoc(postRef, {
+                title,
+                message,
+                userId: user?.id,
+                created_at: serverTimestamp()
+            })
+        } catch (error) {
+            console.log("Error: ", error);
+        }
     }
 
     return (
