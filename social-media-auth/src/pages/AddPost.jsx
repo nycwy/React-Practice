@@ -15,12 +15,17 @@ const AddPost = () => {
     const handleCreatePost = async () => {
         try {
             const postRef = collection(db, "posts");
-            await addDoc(postRef, {
-                title,
-                message,
-                userId: user?.id,
-                created_at: serverTimestamp()
-            })
+            if (!title == '' && !message == '') {
+                await addDoc(postRef, {
+                    title,
+                    message,
+                    userId: user?.id,
+                    created_at: serverTimestamp(),
+                    username: user.username || "Anonymous"
+                });
+            }
+            setTitle('');
+            setMessage('');
         } catch (error) {
             console.log("Error: ", error);
         }
