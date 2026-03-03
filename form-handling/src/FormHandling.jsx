@@ -1,21 +1,39 @@
 import React, { useState } from 'react'
 
 const FormHandling = () => {
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    // const [username, setUsername] = useState('');
+    // const [email, setEmail] = useState('');
+    // const [password, setPassword] = useState('');
+
+    const [formData, setFormData] = useState({
+        username: '',
+        email: '',
+        password: ''
+    });
+
+    const onSubmitHandler = (e) => {
+        e.preventDefault();
+        console.log(formData);
+    }
+
+    const onChangeHandler = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => (
+            { ...prevData, [name]: value }
+        ));
+    };
 
     return (
         <>
-            <form>
+            <form onSubmit={onSubmitHandler}>
                 <div>
-                    <input type="text" placeholder='Username' onChange={(e)=>setUsername(e.target.value)} value={username} />
+                    <input name='username' type="text" placeholder='Username' onChange={onChangeHandler} value={formData.username} />
                 </div>
                 <div>
-                    <input type="email" placeholder='Email' onChange={(e) => setEmail(e.target.value)} value={email} />
+                    <input name='email' type="email" placeholder='Email' onChange={onChangeHandler} value={formData.email} />
                 </div>
                 <div>
-                    <input type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)} value={password} />
+                    <input name='password' type="password" placeholder='Password' onChange={onChangeHandler} value={formData.password} />
                 </div>
                 <input type="submit" value="Submit" />
             </form>
