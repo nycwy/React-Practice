@@ -1,6 +1,4 @@
-import React from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-
 
 const UserDetail = () => {
 
@@ -27,4 +25,4 @@ const UserDetail = () => {
     )
 }
 
-export default UserDetail
+export default UserDetail;
