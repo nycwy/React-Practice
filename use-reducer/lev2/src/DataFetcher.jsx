@@ -48,11 +48,8 @@ const DataFetcher = () => {
     return (
         <div className="flex flex-col items-center justify-center p-8 max-w-lg mx-auto mt-10 bg-white rounded-xl shadow-lg border border-gray-100">
             <h2 className="text-xl font-bold text-gray-800 mb-4">Unsolicited Advice</h2>
-
             {state.loading && <p className="text-blue-500 animate-pulse">Consulting the oracle...</p>}
-
             {state.error && <p className="text-red-500 font-medium">Error: {state.error}</p>}
-
             {state.advice && !state.loading && (
                 <blockquote className="text-2xl text-center text-gray-700 italic border-l-4 border-indigo-500 pl-4 py-2">
                     "{state.advice}"
